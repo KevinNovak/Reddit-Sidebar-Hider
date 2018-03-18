@@ -9,6 +9,7 @@
             "http://*.reddit.com/*",
             "https://*.reddit.com/*"
         ],
-        "css": ["sidebar.css"]
+        "js": ["js/sidebar.js"],
+        "css": ["css/sidebar.css"]
     }]
 }
