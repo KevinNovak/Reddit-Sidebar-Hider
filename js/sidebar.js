@@ -4,7 +4,8 @@ var rules = [
     'body.with-listing-chooser>.content{margin-left:5px!important;}',
     'body.listing-page[class]>.content,body[class]>.content{margin-right:16px!important;}',
     '.linklisting .link{margin-right:0px!important;}',
-    '.sitetable{margin-right:0px!important;}'
+    '.sitetable{margin-right:0px!important;}',
+    'div#siteTable.sitetable.linklisting{padding-right:0px!important}'
 ];
 
 var style = document.createElement('style');
