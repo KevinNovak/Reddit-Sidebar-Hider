@@ -19,10 +19,22 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
 });
 
+function insertRule(rule) {
+    style.sheet.insertRule(rule, style.sheet.cssRules.length);
+}
+
+function deleteAllRules() {
+    for (var i = 0; i < 3; i++) {
+        style.sheet.deleteRule(0);
+    }
+}
+
 function hideSidebar() {
-    style.sheet.insertRule('.side{display:none;}', 0);
+    insertRule('.side{display:none;}');
+    insertRule('.listing-chooser{display:none;}');
+    insertRule('body.with-listing-chooser>.content{margin-left:5px;}');
 }
 
 function showSidebar() {
-    style.sheet.deleteRule(0);
+    deleteAllRules();
 }
