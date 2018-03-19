@@ -1,7 +1,9 @@
 var rules = [
-    '.side{display:none;}',
-    '.listing-chooser{display:none;}',
-    'body.with-listing-chooser>.content{margin-left:5px;}'
+    '.side{display:none!important;}',
+    '.listing-chooser{display:none!important;}',
+    'body.with-listing-chooser>.content{margin-left:5px!important;}',
+    'body.listing-page[class]>.content,body[class]>.content{margin-right:16px!important;}',
+    '.linklisting .link{margin-right:0px!important;}'
 ];
 
 var style = document.createElement('style');
