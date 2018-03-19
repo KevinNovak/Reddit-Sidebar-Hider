@@ -4,6 +4,8 @@
     "description": "Hides the Reddit sidebar.",
     "version": "0.0.0",
 
+    "permissions": ["storage"],
+
     "content_scripts": [{
         "matches": [
             "http://*.reddit.com/*",

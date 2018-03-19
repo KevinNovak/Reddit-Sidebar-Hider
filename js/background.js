@@ -1,7 +1,22 @@
 chrome.browserAction.onClicked.addListener((tab) => {
-    var message = {
-        shouldHide: true
-    };
-    // Send this chrome tab a message (or any data)
-    chrome.tabs.sendMessage(tab.id, message);
+    toggleSidebar(tab);
 });
+
+function toggleSidebar(tab) {
+    chrome.storage.sync.get(['hideByDefault'], (result) => {
+        // If undefined, default to false
+        var shouldHide = result.hideByDefault ? false : true;
+
+        var message = {
+            shouldHide
+        };
+
+        chrome.tabs.sendMessage(tab.id, message);
+
+        chrome.storage.sync.set({
+            hideByDefault: shouldHide
+        }, function () {
+            console.log('"hideByDefault" set to:', shouldHide);
+        });
+    });
+}
