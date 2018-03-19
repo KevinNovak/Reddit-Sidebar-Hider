@@ -1,3 +1,9 @@
+var rules = [
+    '.side{display:none;}',
+    '.listing-chooser{display:none;}',
+    'body.with-listing-chooser>.content{margin-left:5px;}'
+];
+
 var style = document.createElement('style');
 style.id = 'reddit-sidebar-hider';
 style.type = 'text/css';
@@ -23,16 +29,20 @@ function insertRule(rule) {
     style.sheet.insertRule(rule, style.sheet.cssRules.length);
 }
 
+function insertRules(rules) {
+    for (rule of rules) {
+        insertRule(rule);
+    }
+}
+
 function deleteAllRules() {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < rules.length; i++) {
         style.sheet.deleteRule(0);
     }
 }
 
 function hideSidebar() {
-    insertRule('.side{display:none;}');
-    insertRule('.listing-chooser{display:none;}');
-    insertRule('body.with-listing-chooser>.content{margin-left:5px;}');
+    insertRules(rules);
 }
 
 function showSidebar() {
