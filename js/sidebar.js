@@ -2,15 +2,27 @@ var style = document.createElement('style');
 style.id = 'reddit-sidebar-hider';
 style.type = 'text/css';
 
+// After loading the default:
 chrome.storage.sync.get(['hideByDefault'], (result) => {
     document.head.appendChild(style);
-    hideSidebar(result.hideByDefault);
+    if (result.hideByDefault) {
+        hideSidebar();
+    }
 });
 
-function hideSidebar(shouldHide) {
-    if (shouldHide) {
-        style.sheet.insertRule('.side{display:none;}', 0);
+// When toggle button is pressed:
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.shouldHide) {
+        hideSidebar();
     } else {
-        // Unhide
+        showSidebar();
     }
+});
+
+function hideSidebar() {
+    style.sheet.insertRule('.side{display:none;}', 0);
+}
+
+function showSidebar() {
+    style.sheet.deleteRule(0);
 }
