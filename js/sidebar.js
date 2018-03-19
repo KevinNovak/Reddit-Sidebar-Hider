@@ -3,7 +3,8 @@ var rules = [
     '.listing-chooser{display:none!important;}',
     'body.with-listing-chooser>.content{margin-left:5px!important;}',
     'body.listing-page[class]>.content,body[class]>.content{margin-right:16px!important;}',
-    '.linklisting .link{margin-right:0px!important;}'
+    '.linklisting .link{margin-right:0px!important;}',
+    '.sitetable{margin-right:0px!important;}'
 ];
 
 var style = document.createElement('style');
