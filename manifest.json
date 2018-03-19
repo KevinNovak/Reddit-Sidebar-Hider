@@ -5,14 +5,14 @@
     "version": "0.0.0",
 
     "permissions": ["storage"],
-
+    
     "content_scripts": [{
         "matches": [
             "http://*.reddit.com/*",
             "https://*.reddit.com/*"
         ],
         "js": ["js/sidebar.js"],
-        "css": ["css/sidebar.css"]
+        "run_at" : "document_start"
     }],
 
     "background": {

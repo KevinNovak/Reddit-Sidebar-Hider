@@ -1,23 +1,16 @@
-// Grab the default value and process it
-chrome.storage.sync.get(['hideByDefault'], (result) => {
-    var shouldHide = result.hideByDefault ? true : false;
-    hideSidebar(shouldHide);
-});
+var style = document.createElement('style');
+style.id = 'reddit-sidebar-hider';
+style.type = 'text/css';
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    hideSidebar(message.shouldHide);
+chrome.storage.sync.get(['hideByDefault'], (result) => {
+    document.head.appendChild(style);
+    hideSidebar(result.hideByDefault);
 });
 
 function hideSidebar(shouldHide) {
-    var sides = document.getElementsByClassName('side');
-
     if (shouldHide) {
-        for (side of sides) {
-            side.style['display'] = 'none';
-        }
+        style.sheet.insertRule('.side{display:none;}', 0);
     } else {
-        for (side of sides) {
-            side.style['display'] = 'block';
-        }
+        // Unhide
     }
 }
