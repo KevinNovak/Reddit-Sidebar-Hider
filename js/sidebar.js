@@ -43,6 +43,8 @@ var rules = [
     }
 ];
 
+var ruleCount = 0;
+
 var style = document.createElement('style');
 style.id = 'reddit-sidebar-hider';
 style.type = 'text/css';
@@ -69,13 +71,15 @@ function insertRules(rules) {
         for (property of cssClass.properties) {
             var rule = `${cssClass.selector}{${property}!important;}`;
             style.sheet.insertRule(rule, style.sheet.cssRules.length);
+            ruleCount++;
         }
     }
 }
 
 function deleteAllRules() {
-    for (var i = 0; i < rules.length; i++) {
+    while (ruleCount > 0) {
         style.sheet.deleteRule(0);
+        ruleCount--;
     }
 }
 
