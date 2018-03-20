@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Reddit Sidebar Hider",
     "description": "Hides the Reddit sidebar.",
-    "version": "0.0.0",
+    "version": "1.0.0",
 
     "permissions": ["storage"],
 
