@@ -5,14 +5,14 @@
     "version": "0.0.0",
 
     "permissions": ["storage"],
-    
+
     "content_scripts": [{
         "matches": [
             "http://*.reddit.com/*",
             "https://*.reddit.com/*"
         ],
         "js": ["js/sidebar.js"],
-        "run_at" : "document_start"
+        "run_at": "document_start"
     }],
 
     "background": {
@@ -20,6 +20,22 @@
     },
 
     "browser_action": {
-        "default_icon": "images/icon.png"
+        "default_icon": {
+            "16": "images/icon/rsh-16.png",
+            "32": "images/icon/rsh-32.png",
+            "48": "images/icon/rsh-48.png",
+            "128": "images/icon/rsh-128.png",
+            "256": "images/icon/rsh-256.png",
+            "512": "images/icon/rsh-512.png"
+        }
+    },
+
+    "icons": {
+        "16": "images/icon/rsh-16.png",
+        "32": "images/icon/rsh-32.png",
+        "48": "images/icon/rsh-48.png",
+        "128": "images/icon/rsh-128.png",
+        "256": "images/icon/rsh-256.png",
+        "512": "images/icon/rsh-512.png"
     }
 }
