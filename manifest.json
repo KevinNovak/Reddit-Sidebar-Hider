@@ -1,6 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Reddit Sidebar Hider",
+    "short_name": "Reddit Sidebar Hider",
     "description": "Hides the Reddit sidebar.",
     "version": "1.0.0",
 
