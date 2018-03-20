@@ -1,11 +1,46 @@
 var rules = [
-    '.side{display:none!important;}',
-    '.listing-chooser{display:none!important;}',
-    'body.with-listing-chooser>.content{margin-left:5px!important;}',
-    'body.listing-page[class]>.content,body[class]>.content{margin-right:16px!important;}',
-    '.linklisting .link{margin-right:0px!important;}',
-    '.sitetable{margin-right:0px!important;}',
-    'div#siteTable.sitetable.linklisting{padding-right:0px!important}'
+    {
+        selector: '.side',
+        properties: [
+            'display:none'
+        ]
+    },
+    {
+        selector: '.listing-chooser',
+        properties: [
+            'display:none'
+        ]
+    },
+    {
+        selector: 'body.with-listing-chooser>.content',
+        properties: [
+            'margin-left:5px'
+        ]
+    },
+    {
+        selector: 'body.listing-page[class]>.content,body[class]>.content',
+        properties: [
+            'margin-right:16px'
+        ]
+    },
+    {
+        selector: '.linklisting .link',
+        properties: [
+            'margin-right:0px'
+        ]
+    },
+    {
+        selector: '.sitetable',
+        properties: [
+            'margin-right:0px'
+        ]
+    },
+    {
+        selector: 'div#siteTable.sitetable.linklisting',
+        properties: [
+            'padding-right:0px'
+        ]
+    }
 ];
 
 var style = document.createElement('style');
@@ -29,13 +64,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
 });
 
-function insertRule(rule) {
-    style.sheet.insertRule(rule, style.sheet.cssRules.length);
-}
-
 function insertRules(rules) {
-    for (rule of rules) {
-        insertRule(rule);
+    for (cssClass of rules) {
+        for (property of cssClass.properties) {
+            var rule = `${cssClass.selector}{${property}!important;}`;
+            style.sheet.insertRule(rule, style.sheet.cssRules.length);
+        }
     }
 }
 
